@@ -4,7 +4,12 @@ Sistema de gestión escolar desarrollado con una **arquitectura de microservicio
 
 El sistema expone toda su funcionalidad a través de un **API Gateway** con autenticación **JWT**, y se comunica de forma síncrona (REST/Feign) y asíncrona (**RabbitMQ**) entre servicios.
 
-> 🔗 **Frontend del proyecto:** [Frontend-Colegio-Bernardo-Ohiggins](https://github.com/Unluccky/Frontend-Colegio-Bernardo-Ohiggins) (React + Vite + TailwindCSS)
+## Repositorios del proyecto
+
+| Repositorio | Descripción |
+|---|---|
+| [Frontend-Colegio-Bernardo-Ohiggins](https://github.com/Unluccky/Frontend-Colegio-Bernardo-Ohiggins) (React + Vite + TailwindCSS) | API Gateway + microservicios (Spring Boot) |
+| [Documentacion-Colegio-Bernardo-Ohiggins](https://github.com/Unluccky/Documentacion-Colegio-Bernardo-Ohiggins.git) | Informe, diagramas y documentación del proyecto |
 
 ---
 

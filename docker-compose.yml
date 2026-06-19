@@ -1,0 +1,160 @@
+services:
+
+  db-academico:
+    image: mysql:8.0
+    environment:
+      - MYSQL_DATABASE=db_academico
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - academico-data:/var/lib/mysql
+    networks:
+      - colegio-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  db-asistencia:
+    image: mysql:8.0
+    environment:
+      - MYSQL_DATABASE=db_asistencia
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - asistencia-data:/var/lib/mysql
+    networks:
+      - colegio-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  db-comunicaciones:
+    image: mongo:6.0
+    volumes:
+      - comunicaciones-data:/data/db
+    networks:
+      - colegio-net
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "25672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    networks:
+      - colegio-net
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  servicio-academico:
+    build: ./servicio-academico
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-academico:3306/db_academico?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      db-academico:
+        condition: service_healthy
+    networks:
+      - colegio-net
+
+  servicio-asistencia:
+    build: ./servicio-asistencia
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-asistencia:3306/db_asistencia?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - ACADEMICO_SERVICE_URL=http://servicio-academico:8081
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=admin
+      - SPRING_RABBITMQ_PASSWORD=admin
+    depends_on:
+      db-asistencia:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      servicio-academico:
+        condition: service_started
+    networks:
+      - colegio-net
+
+  servicio-comunicaciones:
+    build: ./servicio-comunicaciones
+    ports:
+      - "8083:8083"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://db-comunicaciones:27017/db_comunicaciones
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=admin
+      - SPRING_RABBITMQ_PASSWORD=admin
+    depends_on:
+      db-comunicaciones:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - colegio-net
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "9090:9090"
+    environment:
+      - ACADEMICO_SERVICE_URL=http://servicio-academico:8081
+    depends_on:
+      - servicio-academico
+      - servicio-asistencia
+      - servicio-comunicaciones
+    networks:
+      - colegio-net
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - api-gateway
+    networks:
+      - colegio-net
+
+  # NUEVO: SonarQube - dashboard de calidad de código en localhost:9000
+  sonarqube:
+    image: sonarqube:community
+    ports:
+      - "9000:9000"       # Aquí entras desde el navegador para ver los reportes
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true  # Evita errores de memoria en entorno local
+    volumes:
+      - sonarqube-data:/opt/sonarqube/data      # Guarda los análisis anteriores
+      - sonarqube-logs:/opt/sonarqube/logs      # Guarda los logs del servidor
+    networks:
+      - colegio-net
+
+networks:
+  colegio-net:
+
+volumes:
+  academico-data:
+  asistencia-data:
+  comunicaciones-data:
+  sonarqube-data:    # NUEVO: persistencia de los análisis de SonarQube
+  sonarqube-logs:    # NUEVO: persistencia de los logs de SonarQube

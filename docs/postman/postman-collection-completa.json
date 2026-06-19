@@ -1,0 +1,3052 @@
+{
+  "info": {
+    "name": "Colegio Bernardo O'Higgins - API Completa",
+    "description": "Colección maestra que agrupa todos los microservicios del sistema.",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "API Gateway - Colegio Bernardo O'Higgins",
+      "item": [
+        {
+          "name": "Autenticación",
+          "item": [
+            {
+              "name": "Resetear contraseña (solo UTP)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:9090/auth/resetear-contrasena",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "auth",
+                    "resetear-contrasena"
+                  ],
+                  "port": "9090"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Iniciar sesión",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:9090/auth/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ],
+                  "port": "9090"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Cambiar contraseña",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:9090/auth/cambiar-contrasena",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "auth",
+                    "cambiar-contrasena"
+                  ],
+                  "port": "9090"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "utp-controller",
+          "item": [
+            {
+              "name": "GET /admin/usuarios-utp",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:9090/admin/usuarios-utp",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "admin",
+                    "usuarios-utp"
+                  ],
+                  "port": "9090"
+                }
+              }
+            },
+            {
+              "name": "POST /admin/usuarios-utp",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:9090/admin/usuarios-utp",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "admin",
+                    "usuarios-utp"
+                  ],
+                  "port": "9090"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "DELETE /admin/usuarios-utp/{rut}",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:9090/admin/usuarios-utp/{rut}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "admin",
+                    "usuarios-utp",
+                    ":rut"
+                  ],
+                  "port": "9090",
+                  "variable": [
+                    {
+                      "key": "rut",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Servicio Académico API",
+      "item": [
+        {
+          "name": "Apoderados",
+          "item": [
+            {
+              "name": "Buscar apoderado por ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/apoderados/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "apoderados",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Actualizar apoderado",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/apoderados/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "apoderados",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Eliminar apoderado",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/apoderados/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "apoderados",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Listar todos los apoderados",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/apoderados",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "apoderados"
+                  ],
+                  "port": "8081"
+                }
+              }
+            },
+            {
+              "name": "Crear apoderado",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/apoderados",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "apoderados"
+                  ],
+                  "port": "8081"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Buscar apoderado por RUT",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/apoderados/rut/{rut}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "apoderados",
+                    "rut",
+                    ":rut"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "rut",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Buscar apoderados por estudiante",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/apoderados/estudiante/{estudianteId}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "apoderados",
+                    "estudiante",
+                    ":estudianteId"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "estudianteId",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Asignaturas",
+          "item": [
+            {
+              "name": "Buscar asignatura por ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/asignaturas/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asignaturas",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Actualizar asignatura",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/asignaturas/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asignaturas",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Eliminar asignatura",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/asignaturas/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asignaturas",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Listar todas las asignaturas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/asignaturas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asignaturas"
+                  ],
+                  "port": "8081"
+                }
+              }
+            },
+            {
+              "name": "Crear asignatura",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/asignaturas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asignaturas"
+                  ],
+                  "port": "8081"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Autenticación Académico",
+          "item": [
+            {
+              "name": "Validar credenciales de un usuario",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/auth/validar",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "validar"
+                  ],
+                  "port": "8081"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Resetear contraseña de un usuario (solo UTP)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/auth/resetear-contrasena",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "resetear-contrasena"
+                  ],
+                  "port": "8081"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Cambiar contraseña de un usuario",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/auth/cambiar-contrasena",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "cambiar-contrasena"
+                  ],
+                  "port": "8081"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Estudiantes",
+          "item": [
+            {
+              "name": "Buscar estudiante por ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/estudiantes/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "estudiantes",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Actualizar estudiante",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/estudiantes/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "estudiantes",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Eliminar estudiante",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/estudiantes/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "estudiantes",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Listar todos los estudiantes",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/estudiantes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "estudiantes"
+                  ],
+                  "port": "8081"
+                }
+              }
+            },
+            {
+              "name": "Crear estudiante",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/estudiantes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "estudiantes"
+                  ],
+                  "port": "8081"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Buscar estudiante por RUT",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/estudiantes/rut/{rut}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "estudiantes",
+                    "rut",
+                    ":rut"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "rut",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Evaluaciones",
+          "item": [
+            {
+              "name": "Buscar evaluación por ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/evaluaciones/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "evaluaciones",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Actualizar evaluación",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/evaluaciones/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "evaluaciones",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Eliminar evaluación",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/evaluaciones/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "evaluaciones",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Listar todas las evaluaciones",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/evaluaciones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "evaluaciones"
+                  ],
+                  "port": "8081"
+                }
+              }
+            },
+            {
+              "name": "Crear evaluación",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/evaluaciones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "evaluaciones"
+                  ],
+                  "port": "8081"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Horarios",
+          "item": [
+            {
+              "name": "Buscar horario por ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/horarios/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "horarios",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Actualizar horario",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/horarios/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "horarios",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Eliminar horario",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/horarios/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "horarios",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Listar todos los horarios",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/horarios",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "horarios"
+                  ],
+                  "port": "8081"
+                }
+              }
+            },
+            {
+              "name": "Crear horario",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/horarios",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "horarios"
+                  ],
+                  "port": "8081"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Buscar horarios por profesor",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/horarios/profesor/{profesorId}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "horarios",
+                    "profesor",
+                    ":profesorId"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "profesorId",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Buscar horarios por curso",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/horarios/curso/{curso}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "horarios",
+                    "curso",
+                    ":curso"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "curso",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Buscar horarios por curso y día",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/horarios/curso/{curso}/dia/{dia}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "horarios",
+                    "curso",
+                    ":curso",
+                    "dia",
+                    ":dia"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "curso",
+                      "value": "",
+                      "description": ""
+                    },
+                    {
+                      "key": "dia",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Notas",
+          "item": [
+            {
+              "name": "Listar todas las notas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/notas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "notas"
+                  ],
+                  "port": "8081"
+                }
+              }
+            },
+            {
+              "name": "Registrar nota",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/notas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "notas"
+                  ],
+                  "port": "8081"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Buscar nota por ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/notas/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "notas",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Eliminar nota",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/notas/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "notas",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Buscar notas por estudiante",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/notas/estudiante/{estudianteId}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "notas",
+                    "estudiante",
+                    ":estudianteId"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "estudianteId",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Profesores",
+          "item": [
+            {
+              "name": "Buscar profesor por ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/profesores/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "profesores",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Actualizar profesor",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/profesores/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "profesores",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Eliminar profesor",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/profesores/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "profesores",
+                    ":id"
+                  ],
+                  "port": "8081",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Listar todos los profesores",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/profesores",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "profesores"
+                  ],
+                  "port": "8081"
+                }
+              }
+            },
+            {
+              "name": "Crear profesor",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8081/api/profesores",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "profesores"
+                  ],
+                  "port": "8081"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Servicio Asistencia API",
+      "item": [
+        {
+          "name": "Anotaciones",
+          "item": [
+            {
+              "name": "Buscar anotación por ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/anotaciones/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "anotaciones",
+                    ":id"
+                  ],
+                  "port": "8082",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Actualizar anotación",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/anotaciones/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "anotaciones",
+                    ":id"
+                  ],
+                  "port": "8082",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Eliminar anotación",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/anotaciones/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "anotaciones",
+                    ":id"
+                  ],
+                  "port": "8082",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Listar todas las anotaciones",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/anotaciones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "anotaciones"
+                  ],
+                  "port": "8082"
+                }
+              }
+            },
+            {
+              "name": "Crear anotación",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/anotaciones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "anotaciones"
+                  ],
+                  "port": "8082"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Buscar anotaciones por estudiante",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/anotaciones/estudiante/{estudianteId}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "anotaciones",
+                    "estudiante",
+                    ":estudianteId"
+                  ],
+                  "port": "8082",
+                  "variable": [
+                    {
+                      "key": "estudianteId",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Asistencias",
+          "item": [
+            {
+              "name": "Buscar asistencia por ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/asistencias/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asistencias",
+                    ":id"
+                  ],
+                  "port": "8082",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Actualizar asistencia",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/asistencias/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asistencias",
+                    ":id"
+                  ],
+                  "port": "8082",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Eliminar asistencia",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/asistencias/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asistencias",
+                    ":id"
+                  ],
+                  "port": "8082",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Listar todas las asistencias",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/asistencias",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asistencias"
+                  ],
+                  "port": "8082"
+                }
+              }
+            },
+            {
+              "name": "Registrar asistencia",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/asistencias",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asistencias"
+                  ],
+                  "port": "8082"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Registrar múltiples asistencias",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/asistencias/batch",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asistencias",
+                    "batch"
+                  ],
+                  "port": "8082"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Buscar asistencias por asignatura y fecha",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/asistencias/por-clase",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asistencias",
+                    "por-clase"
+                  ],
+                  "port": "8082",
+                  "query": [
+                    {
+                      "key": "asignaturaId",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    },
+                    {
+                      "key": "fecha",
+                      "value": "",
+                      "description": "",
+                      "disabled": false
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Buscar asistencias por estudiante",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8082/api/asistencias/estudiante/{estudianteId}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "asistencias",
+                    "estudiante",
+                    ":estudianteId"
+                  ],
+                  "port": "8082",
+                  "variable": [
+                    {
+                      "key": "estudianteId",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Servicio Comunicaciones API",
+      "item": [
+        {
+          "name": "Mensajes",
+          "item": [
+            {
+              "name": "Buscar mensaje por ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/mensajes/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "mensajes",
+                    ":id"
+                  ],
+                  "port": "8083",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Actualizar mensaje",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/mensajes/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "mensajes",
+                    ":id"
+                  ],
+                  "port": "8083",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Eliminar mensaje",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/mensajes/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "mensajes",
+                    ":id"
+                  ],
+                  "port": "8083",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Listar todos los mensajes",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/mensajes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "mensajes"
+                  ],
+                  "port": "8083"
+                }
+              }
+            },
+            {
+              "name": "Enviar mensaje",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/mensajes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "mensajes"
+                  ],
+                  "port": "8083"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Buscar mensajes por usuario (ID + tipo)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/mensajes/usuario/{usuarioId}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "mensajes",
+                    "usuario",
+                    ":usuarioId"
+                  ],
+                  "port": "8083",
+                  "variable": [
+                    {
+                      "key": "usuarioId",
+                      "value": "",
+                      "description": ""
+                    }
+                  ],
+                  "query": [
+                    {
+                      "key": "tipo",
+                      "value": "",
+                      "description": "Tipo de usuario: ESTUDIANTE, PROFESOR, APODERADO o UTP",
+                      "disabled": false
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Buscar mensajes por destinatario",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/mensajes/destinatario/{destinatarioId}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "mensajes",
+                    "destinatario",
+                    ":destinatarioId"
+                  ],
+                  "port": "8083",
+                  "variable": [
+                    {
+                      "key": "destinatarioId",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Notificaciones",
+          "item": [
+            {
+              "name": "Listar todas las notificaciones",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/notificaciones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "notificaciones"
+                  ],
+                  "port": "8083"
+                }
+              }
+            },
+            {
+              "name": "Crear notificación",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/notificaciones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "notificaciones"
+                  ],
+                  "port": "8083"
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Buscar notificación por ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/notificaciones/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "notificaciones",
+                    ":id"
+                  ],
+                  "port": "8083",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Eliminar notificación",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/notificaciones/{id}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "notificaciones",
+                    ":id"
+                  ],
+                  "port": "8083",
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Buscar notificaciones por destinatario",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8083/api/notificaciones/destinatario/{destinatarioId}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "path": [
+                    "api",
+                    "notificaciones",
+                    "destinatario",
+                    ":destinatarioId"
+                  ],
+                  "port": "8083",
+                  "variable": [
+                    {
+                      "key": "destinatarioId",
+                      "value": "",
+                      "description": ""
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url_gateway",
+      "value": "http://localhost:9090",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  }
+}

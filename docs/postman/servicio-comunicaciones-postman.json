@@ -1,0 +1,482 @@
+{
+  "info": {
+    "name": "Servicio Comunicaciones API",
+    "description": "API para gestión de mensajes y notificaciones del Colegio Bernardo O'Higgins",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Mensajes",
+      "item": [
+        {
+          "name": "Buscar mensaje por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/mensajes/{id}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "mensajes",
+                ":id"
+              ],
+              "port": "8083",
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar mensaje",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/mensajes/{id}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "mensajes",
+                ":id"
+              ],
+              "port": "8083",
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Eliminar mensaje",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/mensajes/{id}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "mensajes",
+                ":id"
+              ],
+              "port": "8083",
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar todos los mensajes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/mensajes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "mensajes"
+              ],
+              "port": "8083"
+            }
+          }
+        },
+        {
+          "name": "Enviar mensaje",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/mensajes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "mensajes"
+              ],
+              "port": "8083"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Buscar mensajes por usuario (ID + tipo)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/mensajes/usuario/{usuarioId}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "mensajes",
+                "usuario",
+                ":usuarioId"
+              ],
+              "port": "8083",
+              "variable": [
+                {
+                  "key": "usuarioId",
+                  "value": "",
+                  "description": ""
+                }
+              ],
+              "query": [
+                {
+                  "key": "tipo",
+                  "value": "",
+                  "description": "Tipo de usuario: ESTUDIANTE, PROFESOR, APODERADO o UTP",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar mensajes por destinatario",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/mensajes/destinatario/{destinatarioId}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "mensajes",
+                "destinatario",
+                ":destinatarioId"
+              ],
+              "port": "8083",
+              "variable": [
+                {
+                  "key": "destinatarioId",
+                  "value": "",
+                  "description": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notificaciones",
+      "item": [
+        {
+          "name": "Listar todas las notificaciones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/notificaciones",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "notificaciones"
+              ],
+              "port": "8083"
+            }
+          }
+        },
+        {
+          "name": "Crear notificación",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/notificaciones",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "notificaciones"
+              ],
+              "port": "8083"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Buscar notificación por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/notificaciones/{id}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "notificaciones",
+                ":id"
+              ],
+              "port": "8083",
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar notificación",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/notificaciones/{id}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "notificaciones",
+                ":id"
+              ],
+              "port": "8083",
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar notificaciones por destinatario",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8083/api/notificaciones/destinatario/{destinatarioId}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "api",
+                "notificaciones",
+                "destinatario",
+                ":destinatarioId"
+              ],
+              "port": "8083",
+              "variable": [
+                {
+                  "key": "destinatarioId",
+                  "value": "",
+                  "description": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

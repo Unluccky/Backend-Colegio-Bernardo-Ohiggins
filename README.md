@@ -361,7 +361,7 @@ Todos los endpoints se consumen a través del **API Gateway** (`http://localhost
 
 ## Autores
 
-**José Muñoz**
+**José Muñoz**/
 **Sebastián Santander**
 
 Proyecto grupal — Evaluación Parcial N°3

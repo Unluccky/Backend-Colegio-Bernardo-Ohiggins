@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.Map;
 import java.util.Optional;
@@ -47,7 +49,8 @@ public class AuthController {
                description = "Cambia la contraseña del usuario autenticado. Requiere la contraseña actual.")
     @ApiResponses({
         @ApiResponse(responseCode = "200", description = "Resultado de la operación"),
-        @ApiResponse(responseCode = "401", description = "No autorizado")
+        @ApiResponse(responseCode = "401", description = "No autorizado"),
+        @ApiResponse(responseCode = "403", description = "No se permite cambiar la contraseña de otra cuenta")
     })
     public ResponseEntity<?> cambiarContrasena(@RequestBody Map<String, String> request) {
         String rut = request.get("rut");
@@ -58,6 +61,14 @@ public class AuthController {
             return ResponseEntity.badRequest().body(Map.of(
                 "exito", false,
                 "error", "RUT, contraseña actual y nueva contraseña son requeridos"
+            ));
+        }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !rut.equals(authentication.getName())) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of(
+                "exito", false,
+                "error", "Solo puedes cambiar la contraseña de tu propia cuenta"
             ));
         }
 
@@ -74,7 +85,7 @@ public class AuthController {
 
     @PostMapping("/resetear-contrasena")
     @Operation(summary = "Resetear contraseña (solo UTP)",
-               description = "Resetea la contraseña de cualquier usuario sin verificar la actual. Solo para administradores UTP.")
+               description = "Resetea la contraseña de un usuario; requiere sesión autenticada de UTP.")
     @ApiResponses({
         @ApiResponse(responseCode = "200", description = "Resultado de la operación"),
         @ApiResponse(responseCode = "401", description = "No autorizado")

@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/notificaciones")
@@ -52,7 +53,7 @@ public class NotificacionController {
         @ApiResponse(responseCode = "200", description = "Notificación creada"),
         @ApiResponse(responseCode = "400", description = "Datos inválidos")
     })
-    public ResponseEntity<Notificacion> crear(@RequestBody Notificacion notificacion) {
+    public ResponseEntity<Notificacion> crear(@Valid @RequestBody Notificacion notificacion) {
         return ResponseEntity.ok(service.guardar(notificacion));
     }
 

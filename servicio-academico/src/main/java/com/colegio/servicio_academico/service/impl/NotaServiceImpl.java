@@ -6,12 +6,15 @@ import com.colegio.servicio_academico.service.NotaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import jakarta.validation.Validator;
+import jakarta.validation.ConstraintViolationException;
 
 @Service
 @RequiredArgsConstructor
 public class NotaServiceImpl implements NotaService {
 
     private final NotaRepository repo;
+    private final Validator validator;
 
     @Override
     public List<Nota> listarTodos() {
@@ -31,6 +34,10 @@ public class NotaServiceImpl implements NotaService {
 
     @Override
     public Nota guardar(Nota nota) {
+        var violations = validator.validate(nota);
+        if (!violations.isEmpty()) {
+            throw new ConstraintViolationException(violations);
+        }
         return repo.save(nota);
     }
 

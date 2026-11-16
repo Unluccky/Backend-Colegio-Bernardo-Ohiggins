@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -54,7 +55,7 @@ public class NotaController {
         @ApiResponse(responseCode = "200", description = "Nota registrada"),
         @ApiResponse(responseCode = "400", description = "Datos inválidos")
     })
-    public ResponseEntity<Nota> crear(@RequestBody Nota nota) {
+    public ResponseEntity<Nota> crear(@Valid @RequestBody Nota nota) {
         return ResponseEntity.ok(service.guardar(nota));
     }
 

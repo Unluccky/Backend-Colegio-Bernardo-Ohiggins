@@ -21,7 +21,7 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
-    @DisplayName("handleRuntimeException - retorna 404 con mensaje de error")
+    @DisplayName("handleRuntimeException - retorna 404 sin exponer el detalle interno")
     void handleRuntimeException_deberiaRetornar404() {
         RuntimeException ex = new RuntimeException("Recurso no encontrado: 99");
 
@@ -29,7 +29,8 @@ class GlobalExceptionHandlerTest {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody()).containsEntry("error", "Recurso no encontrado: 99");
+        assertThat(response.getBody()).containsEntry("error", "Recurso no encontrado");
+        assertThat(response.getBody()).doesNotContainValue("Recurso no encontrado: 99");
     }
 
     @Test
@@ -41,6 +42,6 @@ class GlobalExceptionHandlerTest {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().get("error")).isEqualTo("Error interno");
+        assertThat(response.getBody().get("error")).isEqualTo("Recurso no encontrado");
     }
 }

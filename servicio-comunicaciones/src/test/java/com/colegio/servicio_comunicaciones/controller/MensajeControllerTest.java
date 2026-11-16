@@ -94,11 +94,11 @@ class MensajeControllerTest {
     @Test
     @DisplayName("GET /api/mensajes/{id} - 404 cuando no existe")
     void buscarPorId_noExiste_retorna404() throws Exception {
-        when(service.buscarPorId("no-existe")).thenThrow(new RuntimeException("Mensaje no encontrado: no-existe"));
+        when(service.buscarPorId("no-existe")).thenThrow(new RuntimeException("Recurso no encontrado"));
 
         mockMvc.perform(get("/api/mensajes/{id}", "no-existe").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.error").value("Mensaje no encontrado: no-existe"));
+                .andExpect(jsonPath("$.error").value("Recurso no encontrado"));
     }
 
     @Test
@@ -135,6 +135,43 @@ class MensajeControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value("msg-001"));
+    }
+
+    @Test
+    @DisplayName("POST /api/mensajes - rechaza contenido nulo o vacío")
+    void crear_conContenidoNuloOVacio_retorna400() throws Exception {
+        for (String contenido : new String[]{"null", "\"   \""}) {
+            String json = jsonMensaje.replace("\"Contenido del mensaje\"", contenido);
+            mockMvc.perform(post("/api/mensajes")
+                            .contentType(MediaType.APPLICATION_JSON).content(json))
+                    .andExpect(status().isBadRequest())
+                    .andExpect(jsonPath("$.error").value("Datos inválidos"));
+        }
+        verify(service, never()).guardar(any(Mensaje.class));
+    }
+
+    @Test
+    @DisplayName("GET /api/mensajes/destinatario/{id} - acepta ID válido sin resultados")
+    void buscarPorDestinatario_inexistente_retornaListaVacia() throws Exception {
+        when(service.buscarPorDestinatario(999999L)).thenReturn(List.of());
+        mockMvc.perform(get("/api/mensajes/destinatario/999999"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(0));
+    }
+
+    @Test
+    @DisplayName("POST /api/mensajes - JSON malformado retorna 400")
+    void crear_conJsonMalformado_retorna400() throws Exception {
+        mockMvc.perform(post("/api/mensajes").contentType(MediaType.APPLICATION_JSON).content("{"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("GET /api/mensajes/destinatario/{id} - rechaza ID fuera de rango")
+    void buscarPorDestinatario_conIdFueraDeRango_retorna400() throws Exception {
+        mockMvc.perform(get("/api/mensajes/destinatario/9223372036854775808"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("Datos inválidos"));
     }
 
     @Test

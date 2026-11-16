@@ -43,7 +43,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         // RUTAS PÚBLICAS (sin token)
         // ─────────────────────────────────────────────
         if (path.startsWith("/auth/login") ||
-            path.startsWith("/auth/resetear-contrasena") ||
             path.equals("/favicon.ico") ||
             path.startsWith("/swagger-ui") ||
             path.startsWith("/v3/api-docs") ||

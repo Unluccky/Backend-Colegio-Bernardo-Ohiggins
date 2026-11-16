@@ -61,8 +61,6 @@ services:
 
   servicio-academico:
     build: ./servicio-academico
-    ports:
-      - "8081:8081"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db-academico:3306/db_academico?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=root
@@ -75,8 +73,6 @@ services:
 
   servicio-asistencia:
     build: ./servicio-asistencia
-    ports:
-      - "8082:8082"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db-asistencia:3306/db_asistencia?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=root
@@ -98,8 +94,6 @@ services:
 
   servicio-comunicaciones:
     build: ./servicio-comunicaciones
-    ports:
-      - "8083:8083"
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://db-comunicaciones:27017/db_comunicaciones
       - SPRING_RABBITMQ_HOST=rabbitmq
@@ -120,6 +114,7 @@ services:
       - "9090:9090"
     environment:
       - ACADEMICO_SERVICE_URL=http://servicio-academico:8081
+      - JWT_SECRET=${JWT_SECRET:?Define JWT_SECRET en el entorno o en .env}
     depends_on:
       - servicio-academico
       - servicio-asistencia

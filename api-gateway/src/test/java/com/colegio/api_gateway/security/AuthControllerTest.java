@@ -1,6 +1,7 @@
 package com.colegio.api_gateway.security;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,6 +12,10 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.List;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -24,6 +29,13 @@ class AuthControllerTest {
 
     @InjectMocks
     private AuthController authController;
+
+    @BeforeEach
+    void autenticarUsuarioDePrueba() {
+        SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken("77777777-7", null,
+                        List.of(new SimpleGrantedAuthority("ROLE_UTP"))));
+    }
 
     // ── POST /auth/login ─────────────────────────────────
 
@@ -91,6 +103,18 @@ class AuthControllerTest {
         ResponseEntity<?> response = authController.cambiarContrasena(request);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+    }
+
+    @Test
+    @DisplayName("cambiarContrasena - no permite cambiar la clave de otro usuario")
+    void cambiarContrasena_rutAjeno_retorna403() {
+        Map<String, String> request = Map.of(
+                "rut", "11111111-1", "currentPassword", "actual", "newPassword", "nuevaClave");
+
+        ResponseEntity<?> response = authController.cambiarContrasena(request);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
+        verifyNoInteractions(authService);
     }
 
     @Test

@@ -102,6 +102,34 @@ class NotaControllerTest {
     }
 
     @Test
+    @DisplayName("POST /api/notas - rechaza valores fuera de 1.0 a 7.0")
+    void crear_conNotaFueraDeRango_retorna400() throws Exception {
+        mockMvc.perform(post("/api/notas")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"estudiante\":{\"id\":1},\"evaluacion\":{\"id\":1},\"valor\":7.5}")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("Datos inválidos"));
+
+        verifyNoInteractions(service);
+    }
+
+    @Test
+    @DisplayName("GET /api/notas/{id} - rechaza ID fuera del rango de Long")
+    void buscarPorId_conIdFueraDeRango_retorna400() throws Exception {
+        mockMvc.perform(get("/api/notas/9223372036854775808"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("Datos inválidos"));
+    }
+
+    @Test
+    @DisplayName("POST /api/notas - JSON malformado retorna 400")
+    void crear_conJsonMalformado_retorna400() throws Exception {
+        mockMvc.perform(post("/api/notas").contentType(MediaType.APPLICATION_JSON).content("{"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
     @DisplayName("DELETE /api/notas/{id} - elimina nota")
     void eliminar_existente_retorna204() throws Exception {
         doNothing().when(service).eliminar(1L);

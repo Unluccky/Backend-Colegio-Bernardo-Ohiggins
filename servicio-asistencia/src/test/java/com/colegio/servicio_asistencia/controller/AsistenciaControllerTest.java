@@ -96,7 +96,7 @@ class AsistenciaControllerTest {
 
         mockMvc.perform(get("/api/asistencias/{id}", 99L).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.error").value("Asistencia no encontrada: 99"));
+                .andExpect(jsonPath("$.error").value("Recurso no encontrado"));
     }
 
     @Test

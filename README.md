@@ -43,6 +43,8 @@ Cliente Web (React + Vite)
 | **servicio-comunicaciones** | `8083` | Spring Boot 4 + Spring Data MongoDB | MongoDB (`db_comunicaciones`) | Mensajería interna y notificaciones |
 | **frontend** | `3000` (Docker) / `5173` (dev) | React + Vite + TailwindCSS | — | Interfaz de usuario ([repositorio del frontend](https://github.com/Unluccky/Frontend-Colegio-Bernardo-Ohiggins)) |
 
+Las rutas de datos personales usan acceso por rol y perfiles propios: `GET /me/estudiante` para alumnos y `GET /me/pupilo` para apoderados. Las contraseñas nunca se incluyen en respuestas JSON. El reseteo administrativo de contraseñas requiere un JWT del rol UTP.
+
 `servicio-asistencia` consulta a `servicio-academico` vía **Feign Client** (con *fallback* y Circuit Breaker de Resilience4j) para validar datos de estudiantes, y publica eventos `AnotacionEvent` por **RabbitMQ** cada vez que se crea una anotación; `servicio-comunicaciones` los consume para generar notificaciones automáticas.
 
 ---
@@ -126,6 +128,7 @@ colegio-bernardo-ohiggins/
 - **Docker** y **Docker Compose** (forma recomendada de ejecutar el proyecto completo)
 - **Java 21+** y **Maven** (solo si se quiere ejecutar algún servicio fuera de Docker)
 - **Node.js 18+** (solo si se quiere ejecutar el [frontend](https://github.com/Unluccky/Frontend-Colegio-Bernardo-Ohiggins) en modo desarrollo)
+- **k6** (solo si se quiere ejecutar la prueba de carga)
 
 ---
 
@@ -140,9 +143,20 @@ cd colegio-bernardo-ohiggins
 
 ### 2. Levantar todos los servicios
 
-```bash
-docker-compose up -d
+Antes del primer arranque, crea `.env` y reemplaza `JWT_SECRET` por un secreto aleatorio de al menos 32 bytes:
+
+```powershell
+Copy-Item .env.example .env
+[Convert]::ToBase64String([Security.Cryptography.RandomNumberGenerator]::GetBytes(48))
 ```
+
+Guarda el resultado como `JWT_SECRET=...` en `.env`. El archivo `.env` está excluido de Git.
+
+```bash
+docker compose up -d
+```
+
+Los puertos de los microservicios quedan internos a la red Docker; los clientes deben usar el API Gateway (`9090`).
 
 Esto construye y levanta **10 contenedores**: los 4 microservicios Java, el frontend, las bases de datos (MySQL ×2, MongoDB), RabbitMQ y SonarQube. La primera vez puede tardar unos minutos mientras se compilan las imágenes y las bases de datos pasan su *healthcheck*.
 
@@ -205,6 +219,10 @@ cd api-gateway && ./mvnw clean verify
 ```
 
 `mvn clean verify` ejecuta los tests con JUnit 5 + Mockito + MockMvc y genera el reporte de cobertura **JaCoCo** en `target/site/jacoco`.
+
+Los cambios de seguridad y validación también se cubren con pruebas de autorización, límite de intentos, serialización de credenciales, rango de notas y solapamiento de horarios. En el frontend, ejecuta `npm ci` seguido de `npm test`.
+
+La prueba de carga está en `scripts/load-test.js`. Con el sistema levantado y una cuenta UTP ficticia, define `BASE_URL`, `RUT` y `PASSWORD`, y ejecuta `k6 run scripts/load-test.js`. Guarda el informe de k6 como evidencia del caso CP-004; usa solo cuentas y datos ficticios.
 
 ### Análisis de calidad con SonarQube
 

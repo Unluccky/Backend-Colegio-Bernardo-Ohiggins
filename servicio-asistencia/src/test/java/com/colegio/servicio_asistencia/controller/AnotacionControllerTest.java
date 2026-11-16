@@ -96,7 +96,7 @@ class AnotacionControllerTest {
 
         mockMvc.perform(get("/api/anotaciones/{id}", 99L).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.error").value("Anotacion no encontrada: 99"));
+                .andExpect(jsonPath("$.error").value("Recurso no encontrado"));
     }
 
     @Test
@@ -144,6 +144,22 @@ class AnotacionControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.tipo").value("POSITIVA"));
+    }
+
+    @Test
+    @DisplayName("POST /api/anotaciones - JSON malformado retorna 400")
+    void crear_conJsonMalformado_retorna400() throws Exception {
+        mockMvc.perform(post("/api/anotaciones").contentType(MediaType.APPLICATION_JSON).content("{"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("Datos inválidos"));
+    }
+
+    @Test
+    @DisplayName("GET /api/anotaciones/{id} - rechaza ID fuera del rango de Long")
+    void buscar_conIdFueraDeRango_retorna400() throws Exception {
+        mockMvc.perform(get("/api/anotaciones/9223372036854775808"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("Datos inválidos"));
     }
 
     @Test

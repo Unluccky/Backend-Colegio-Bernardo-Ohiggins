@@ -2,6 +2,7 @@ package com.colegio.servicio_academico.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Entity
@@ -29,5 +30,6 @@ public class Profesor {
 
     private String email;
     @NotBlank // Hacemos que sea obligatoria para el registro
-    private String contrasena; // <--- CAMBIO: Agregamos el campo de contraseña
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String contrasena;
 }

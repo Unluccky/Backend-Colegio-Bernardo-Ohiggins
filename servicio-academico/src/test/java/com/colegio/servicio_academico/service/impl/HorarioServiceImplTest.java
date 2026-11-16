@@ -136,6 +136,57 @@ class HorarioServiceImplTest {
     }
 
     @Test
+    @DisplayName("guardar - rechaza solapamiento para el mismo curso")
+    void guardar_solapamientoCurso_lanzaExcepcion() {
+        Horario nuevo = Horario.builder().curso(8).dia(1)
+                .horaInicio("09:00").horaFin("10:00").build();
+        when(repo.findByCursoAndDiaOrderByHoraInicio(8, 1)).thenReturn(List.of(horarioBase));
+
+        assertThatThrownBy(() -> service.guardar(nuevo))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("superpone");
+        verify(repo, never()).save(any(Horario.class));
+    }
+
+    @Test
+    @DisplayName("guardar - rechaza solapamiento para el mismo profesor en otro curso")
+    void guardar_solapamientoProfesor_lanzaExcepcion() {
+        Profesor profesor = Profesor.builder().id(1L).build();
+        Horario nuevo = Horario.builder().profesor(profesor).curso(9).dia(1)
+                .horaInicio("09:00").horaFin("10:00").build();
+        when(repo.findByProfesorId(1L)).thenReturn(List.of(horarioBase));
+
+        assertThatThrownBy(() -> service.guardar(nuevo))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("superpone");
+        verify(repo, never()).save(any(Horario.class));
+    }
+
+    @Test
+    @DisplayName("guardar - permite horarios contiguos")
+    void guardar_horariosContiguos_guardaCorrectamente() {
+        Horario nuevo = Horario.builder().curso(8).dia(1)
+                .horaInicio("09:30").horaFin("10:30").build();
+        when(repo.findByCursoAndDiaOrderByHoraInicio(8, 1)).thenReturn(List.of(horarioBase));
+
+        service.guardar(nuevo);
+
+        verify(repo).save(nuevo);
+    }
+
+    @Test
+    @DisplayName("guardar - rechaza rango de horas invertido")
+    void guardar_horasInvertidas_lanzaExcepcion() {
+        Horario nuevo = Horario.builder().curso(8).dia(1)
+                .horaInicio("10:00").horaFin("09:00").build();
+
+        assertThatThrownBy(() -> service.guardar(nuevo))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("anterior");
+        verify(repo, never()).save(any(Horario.class));
+    }
+
+    @Test
     @DisplayName("actualizar - modifica campos y persiste cambios")
     void actualizar_deberiaActualizarCampos() {
         Horario datosNuevos = Horario.builder()

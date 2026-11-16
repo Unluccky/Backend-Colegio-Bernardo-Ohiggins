@@ -87,8 +87,8 @@ public class SecurityConfig {
                 // Cambio de contraseña (autenticado)
                 .requestMatchers(HttpMethod.POST, "/auth/cambiar-contrasena").authenticated()
 
-                // Reset de contraseña (público para olvidé mi contraseña; UTP también puede usarlo autenticado)
-                .requestMatchers(HttpMethod.POST, "/auth/resetear-contrasena").permitAll()
+                // El reseteo administrativo solo puede realizarlo un usuario UTP autenticado.
+                .requestMatchers(HttpMethod.POST, "/auth/resetear-contrasena").hasRole("UTP")
 
                 // Swagger/OpenAPI público
                 .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/webjars/**", "/favicon.ico").permitAll()
@@ -97,14 +97,13 @@ public class SecurityConfig {
                 .requestMatchers("/comunicaciones/swagger-ui/**", "/comunicaciones/v3/api-docs/**", "/comunicaciones/webjars/**").permitAll()
 
                 // ── UTP (admin: POST/DELETE solo UTP; GET: cualquier rol autenticado) ──
-                .requestMatchers(HttpMethod.GET, "/admin/usuarios-utp")
-                    .authenticated()
                 .requestMatchers("/admin/**")
                     .hasRole("UTP")
 
-                // ── Estudiantes (lectura: todos los roles; escritura: solo UTP) ──
+                // ── Estudiantes: listado y detalle solo para roles institucionales.
+                // Alumnos y apoderados acceden a sus propios datos mediante /me/**. ──
                 .requestMatchers(HttpMethod.GET, "/academico/api/estudiantes/**")
-                    .hasAnyRole("UTP", "PROFESOR", "ALUMNO", "APODERADO")
+                    .hasAnyRole("UTP", "PROFESOR")
                 .requestMatchers("/academico/api/estudiantes/**")
                     .hasRole("UTP")
 
@@ -116,7 +115,7 @@ public class SecurityConfig {
 
                 // ── Apoderados (lectura: todos; escritura: UTP) ──────────
                 .requestMatchers(HttpMethod.GET, "/academico/api/apoderados/**")
-                    .hasAnyRole("UTP", "PROFESOR", "ALUMNO", "APODERADO")
+                    .hasRole("UTP")
                 .requestMatchers("/academico/api/apoderados/**")
                     .hasRole("UTP")
 
@@ -158,9 +157,16 @@ public class SecurityConfig {
                 .requestMatchers("/comunicaciones/**")
                     .authenticated()
 
+                .requestMatchers("/me/estudiante").hasRole("ALUMNO")
+                .requestMatchers("/me/pupilo").hasRole("APODERADO")
+
                 .anyRequest().authenticated()
             )
 
+            .addFilterBefore(
+                    new LoginRateLimitFilter(),
+                    UsernamePasswordAuthenticationFilter.class
+            )
             .addFilterBefore(
                     jwtAuthenticationFilter,
                     UsernamePasswordAuthenticationFilter.class

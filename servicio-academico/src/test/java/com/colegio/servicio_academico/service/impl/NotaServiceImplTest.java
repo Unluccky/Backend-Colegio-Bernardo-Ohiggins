@@ -18,13 +18,40 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
+import java.util.Set;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("NotaService - Pruebas Unitarias")
 class NotaServiceImplTest {
 
+    @Test
+    @DisplayName("Nota - solo acepta valores de 1.0 a 7.0")
+    void nota_soloPermiteEscalaValida() {
+        try (ValidatorFactory factory = Validation.buildDefaultValidatorFactory()) {
+            Validator validator = factory.getValidator();
+            Nota nota = Nota.builder().estudiante(Estudiante.builder().id(1L).build())
+                    .evaluacion(Evaluacion.builder().id(1L).build()).valor(1.0).build();
+
+            assertThat(validator.validate(nota)).isEmpty();
+            nota.setValor(7.0);
+            assertThat(validator.validate(nota)).isEmpty();
+            nota.setValor(0.0);
+            assertThat(validator.validate(nota)).isNotEmpty();
+            nota.setValor(7.1);
+            assertThat(validator.validate(nota)).isNotEmpty();
+            nota.setValor(null);
+            assertThat(validator.validate(nota)).isNotEmpty();
+        }
+    }
+
     @Mock
     private NotaRepository repo;
+
+    @Mock
+    private Validator validator;
 
     @InjectMocks
     private NotaServiceImpl service;
@@ -35,6 +62,7 @@ class NotaServiceImplTest {
 
     @BeforeEach
     void setUp() {
+        lenient().when(validator.validate(any(Nota.class))).thenReturn(Set.of());
         estudiante = Estudiante.builder()
                 .id(1L).nombre("Juan").apellido("Pérez")
                 .rut("12345678-9").email("juan@colegio.cl").curso(8)

@@ -93,11 +93,11 @@ class NotificacionControllerTest {
     @Test
     @DisplayName("GET /api/notificaciones/{id} - 404 cuando no existe")
     void buscarPorId_noExiste_retorna404() throws Exception {
-        when(service.buscarPorId("no-existe")).thenThrow(new RuntimeException("Notificacion no encontrada: no-existe"));
+        when(service.buscarPorId("no-existe")).thenThrow(new RuntimeException("Recurso no encontrado"));
 
         mockMvc.perform(get("/api/notificaciones/{id}", "no-existe").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.error").value("Notificacion no encontrada: no-existe"));
+                .andExpect(jsonPath("$.error").value("Recurso no encontrado"));
     }
 
     @Test
@@ -122,6 +122,25 @@ class NotificacionControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value("notif-001"));
+    }
+
+    @Test
+    @DisplayName("POST /api/notificaciones - rechaza destinatario inexistente (ID cero)")
+    void crear_conDestinatarioInvalido_retorna400() throws Exception {
+        String json = jsonNotificacion.replace("\"destinatarioId\":2", "\"destinatarioId\":0");
+        mockMvc.perform(post("/api/notificaciones")
+                        .contentType(MediaType.APPLICATION_JSON).content(json))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("Datos inválidos"));
+        verify(service, never()).guardar(any(Notificacion.class));
+    }
+
+    @Test
+    @DisplayName("POST /api/notificaciones - JSON malformado retorna 400")
+    void crear_conJsonMalformado_retorna400() throws Exception {
+        mockMvc.perform(post("/api/notificaciones")
+                        .contentType(MediaType.APPLICATION_JSON).content("{"))
+                .andExpect(status().isBadRequest());
     }
 
     @Test

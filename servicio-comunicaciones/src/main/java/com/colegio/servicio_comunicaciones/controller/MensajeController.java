@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/mensajes")
@@ -76,7 +77,7 @@ public class MensajeController {
         @ApiResponse(responseCode = "200", description = "Mensaje enviado"),
         @ApiResponse(responseCode = "400", description = "Datos inválidos")
     })
-    public ResponseEntity<Mensaje> crear(@RequestBody Mensaje mensaje) {
+    public ResponseEntity<Mensaje> crear(@Valid @RequestBody Mensaje mensaje) {
         return ResponseEntity.ok(service.guardar(mensaje));
     }
 
